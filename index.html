@@ -1,1 +1,29 @@
 Hello World
+
+
+<script type='text/javascript'>
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'it';
+
+      window.addEventListener("onEmbeddedMessagingReady", () => {
+
+                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({'APISITOWEB' : 'AAT5'});
+                }
+            );
+
+      embeddedservice_bootstrap.init(
+        '00DUA0000017Juz',
+        'Flu_Acqua',
+        'https://aceaidrico--migration.sandbox.my.site.com/ESWFluAcqua1716203526290'',
+        {
+          scrt2URL: 'https://aceaidrico--migration.sandbox.my.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  };
+</script>
+<script type='text/javascript' src='https://aceaidrico--migration.sandbox.my.site.com/ESWFluAcqua1716203526290/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'>
+</script>
