@@ -27,21 +27,3 @@ Hello World
 <script type='text/javascript' src='https://aceaidrico--migration.sandbox.my.site.com/ESWFluAcqua1716203526290/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'>
 </script>
 
-<script type='text/javascript'>
-  // Script per modificare l'attributo aria-hidden dell'icona di chat
-  function setAriaHiddenToFalse() {
-    const chatIcon = document.getElementById('embeddedMessagingIconChat');
-    if (chatIcon) {
-      chatIcon.setAttribute('aria-hidden', 'true');
-      console.log('Attributo aria-hidden impostato a false per embeddedMessagingIconChat');
-    } else {
-      setTimeout(setAriaHiddenToFalse, 100);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', setAriaHiddenToFalse);
-  
-  window.addEventListener('load', setAriaHiddenToFalse);
-  
-  window.addEventListener("onEmbeddedMessagingReady", setAriaHiddenToFalse);
-</script>
