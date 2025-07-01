@@ -5,9 +5,49 @@ Hello World
     try {
       embeddedservice_bootstrap.settings.language = 'it';
 
+      // Aggiungi un listener per quando il bot è pronto
       window.addEventListener("onEmbeddedMessagingReady", () => {
         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({'APISITOWEB' : 'AAT5'});
         
+        // Configura un observer per monitorare quando l'icona diventa visibile
+        const observer = new MutationObserver((mutations) => {
+          const iconSvg = document.querySelector('#embeddedMessagingIconChat');
+          if (iconSvg) {
+            const pathElement = iconSvg.querySelector('path');
+            if (pathElement) {
+              // Sostituisci con un path SVG valido
+              pathElement.setAttribute('d', 'M50 0c27.614 0 50 20.52 50 45.833S77.614 91.667 50 91.667c-8.458 0-16.425-1.925-23.409-5.323-13.33 6.973-21.083 9.839-23.258 8.595-2.064-1.18.114-8.436 6.534-21.767C3.667 65.54 0 56.08 0 45.833 0 20.52 22.386 0 50 0zm4.583 61.667H22.917a2.917 2.917 0 000 5.833h31.666a2.917 2.917 0 000-5.833zm12.5-15.834H22.917a2.917 2.917 0 000 5.834h44.166a2.917 2.917 0 000-5.834zM79.583 30H22.917a2.917 2.917 0 000 5.833h56.666a2.917 2.917 0 000-5.833z');
+              
+              // Modifica il colore dell'icona (opzionale)
+              pathElement.setAttribute('fill', '#2D81B1'); // Usa il colore del header
+              
+              // Rendi l'icona visibile se è nascosta
+              iconSvg.style.display = 'block';
+              
+              // Ferma l'observer una volta che abbiamo modificato l'icona
+              observer.disconnect();
+            }
+          }
+        });
+        
+        // Inizia l'osservazione del DOM
+        observer.observe(document.body, { 
+          childList: true, 
+          subtree: true 
+        });
+        
+        // Backup: prova a modificare l'icona dopo un ritardo
+        setTimeout(() => {
+          const iconSvg = document.querySelector('#embeddedMessagingIconChat');
+          if (iconSvg) {
+            const pathElement = iconSvg.querySelector('path');
+            if (pathElement) {
+              pathElement.setAttribute('d', 'M50 0c27.614 0 50 20.52 50 45.833S77.614 91.667 50 91.667c-8.458 0-16.425-1.925-23.409-5.323-13.33 6.973-21.083 9.839-23.258 8.595-2.064-1.18.114-8.436 6.534-21.767C3.667 65.54 0 56.08 0 45.833 0 20.52 22.386 0 50 0zm4.583 61.667H22.917a2.917 2.917 0 000 5.833h31.666a2.917 2.917 0 000-5.833zm12.5-15.834H22.917a2.917 2.917 0 000 5.834h44.166a2.917 2.917 0 000-5.834zM79.583 30H22.917a2.917 2.917 0 000 5.833h56.666a2.917 2.917 0 000-5.833z');
+              iconSvg.style.display = 'block';
+            }
+          }
+        }, 2000);
+      });
 
       embeddedservice_bootstrap.init(
         '00DUA0000017Juz',
@@ -21,6 +61,4 @@ Hello World
       console.error('Error loading Embedded Messaging: ', err);
     }
   };
-</script>
-<script type='text/javascript' src='https://aceaidrico--migration.sandbox.my.site.com/ESWFluAcqua1716203526290/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'>
 </script>
