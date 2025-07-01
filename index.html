@@ -1,74 +1,29 @@
 Hello World
 
 <script type='text/javascript'>
-  function initEmbeddedMessaging() {
-    try {
-      embeddedservice_bootstrap.settings.language = 'it';
-      let iconaGiaModificata = false;
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'it';
 
-      window.addEventListener("onEmbeddedMessagingReady", () => {
-        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({'APISITOWEB' : 'AAT5'});
-        
-        function modificaIcona() {
-          if (iconaGiaModificata) return;
-          
-          const iconSvg = document.querySelector('#embeddedMessagingIconChat');
-          if (iconSvg) {
-            // 1. IMPORTANTE: Rimuovere l'attributo display:none
-            iconSvg.style.display = 'block';
-            
-            const pathElement = iconSvg.querySelector('path');
-            if (pathElement) {
-              console.log('Modifico icona una sola volta...');
-              
-              // 2. Path SVG corretto e verificato
-              pathElement.setAttribute('d', 'M50 0c27.614 0 50 20.52 50 45.833S77.614 91.667 50 91.667c-8.458 0-16.425-1.925-23.409-5.323-13.33 6.973-21.083 9.839-23.258 8.595-2.064-1.18.114-8.436 6.534-21.767C3.667 65.54 0 56.08 0 45.833 0 20.52 22.386 0 50 0zm4.583 61.667H22.917a2.917 2.917 0 000 5.833h31.666a2.917 2.917 0 000-5.833zm12.5-15.834H22.917a2.917 2.917 0 000 5.834h44.166a2.917 2.917 0 000-5.834zM79.583 30H22.917a2.917 2.917 0 000 5.833h56.666a2.917 2.917 0 000-5.833z');
-              
-              pathElement.setAttribute('fill', 'white'); // Bianco per migliore visibilità su sfondo blu
-              
-              // 3. Soluzione alternativa: sostituire l'intero SVG
-              // iconSvg.outerHTML = `<svg focusable="false" aria-hidden="true" viewBox="0 0 100 100" id="embeddedMessagingIconChat" class="embeddedMessagingIconChat" style="display: block;">
-              //   <path d="M50 0c27.614 0 50 20.52 50 45.833S77.614 91.667 50 91.667c-8.458 0-16.425-1.925-23.409-5.323-13.33 6.973-21.083 9.839-23.258 8.595-2.064-1.18.114-8.436 6.534-21.767C3.667 65.54 0 56.08 0 45.833 0 20.52 22.386 0 50 0zm4.583 61.667H22.917a2.917 2.917 0 000 5.833h31.666a2.917 2.917 0 000-5.833zm12.5-15.834H22.917a2.917 2.917 0 000 5.834h44.166a2.917 2.917 0 000-5.834zM79.583 30H22.917a2.917 2.917 0 000 5.833h56.666a2.917 2.917 0 000-5.833z" fill="white"></path>
-              // </svg>`;
-              
-              iconaGiaModificata = true;
-              if (observer) observer.disconnect();
-              clearInterval(checkInterval);
-            }
-          }
-        }
+      window.addEventListener("onEmbeddedMessagingReady", () => {
 
-        const checkInterval = setInterval(() => {
-          modificaIcona();
-        }, 300);
+                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({'APISITOWEB' : 'AAT5'});
+                }
+            );
 
-        const observer = new MutationObserver(() => {
-          modificaIcona();
-        });
-        
-        observer.observe(document.body, { 
-          childList: true, 
-          subtree: true,
-          attributes: true,
-          attributeFilter: ['style'] // Monitora anche cambiamenti di stile
-        });
-        
-        setTimeout(() => {
-          clearInterval(checkInterval);
-          observer.disconnect();
-        }, 10000);
-      });
-
-      embeddedservice_bootstrap.init(
-        '00DUA0000017Juz',
-        'Flu_Acqua',
-        'https://aceaidrico--migration.sandbox.my.site.com/ESWFluAcqua1716203526290',
-        {
-          scrt2URL: 'https://aceaidrico--migration.sandbox.my.salesforce-scrt.com'
-        }
-      );
-    } catch (err) {
-      console.error('Error loading Embedded Messaging: ', err);
-    }
-  };
+      embeddedservice_bootstrap.init(
+        '00DUA0000017Juz',
+        'Flu_Acqua',
+        'https://aceaidrico--migration.sandbox.my.site.com/ESWFluAcqua1716203526290',
+        {
+          scrt2URL: 'https://aceaidrico--migration.sandbox.my.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  };
+</script>
+<script type='text/javascript' src='https://aceaidrico--migration.sandbox.my.site.com/ESWFluAcqua1716203526290/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'>
+</script>
 </script>
