@@ -32,7 +32,7 @@ Hello World
   function setAriaHiddenToFalse() {
     const chatIcon = document.getElementById('embeddedMessagingIconChat');
     if (chatIcon) {
-      chatIcon.setAttribute('aria-hidden', 'false');
+      chatIcon.setAttribute('aria-hidden', 'true');
       console.log('Attributo aria-hidden impostato a false per embeddedMessagingIconChat');
     } else {
       setTimeout(setAriaHiddenToFalse, 100);
