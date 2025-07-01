@@ -8,17 +8,6 @@ Hello World
       window.addEventListener("onEmbeddedMessagingReady", () => {
         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({'APISITOWEB' : 'AAT5'});
         
-        setTimeout(() => {
-          const iconSvg = document.querySelector('.embeddedMessagingIconChat');
-          if (iconSvg) {
-            const pathElement = iconSvg.querySelector('path');
-            if (pathElement) {
-              pathElement.setAttribute('d', 'M50 0c27.614 0 50 20.5.08 0 45.833 0 20.52 22.386 0 50 0zm4.583 61.667H22.917a2.917 2.917 0 000 5.833h31.666a2.917 2.917 0 000-5.833zm12.5-15.834H22.917a2.917 2.917 0 000 5.834h44.166a2.917 2.917 0 000-5.834zM79.583 30H22.917a2.917 2.917 0 000 5.833h56.666a2.917 2.917 0 000-5.833z');
-              pathElement.setAttribute('fill', '#0070d2'); // Blu Salesforce
-            }
-          }
-        }, 200);
-      });
 
       embeddedservice_bootstrap.init(
         '00DUA0000017Juz',
