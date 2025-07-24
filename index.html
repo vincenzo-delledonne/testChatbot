@@ -6,7 +6,20 @@ Hello World
       embeddedservice_bootstrap.settings.language = 'it';
 
       window.addEventListener("onEmbeddedMessagingReady", () => {
+        const observer = new MutationObserver((mutations) => {
+        const chatButton = document.getElementById('embeddedMessagingConversationButton');
+        if (chatButton) {
+          const nuovoTesto = 'Il tuo nuovo messaggio qui';
+          chatButton.setAttribute('aria-label', nuovoTesto);
+          chatButton.setAttribute('title', nuovoTesto);
+          observer.disconnect(); // Stop observing once found
+        }
+    });
 
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
                     embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({'APISITOWEB' : 'AAT5'});
                 }
             );
