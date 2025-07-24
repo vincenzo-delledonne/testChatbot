@@ -9,10 +9,10 @@ Hello World
         const observer = new MutationObserver((mutations) => {
         const chatButton = document.getElementById('embeddedMessagingConversationButton');
         if (chatButton) {
-          const nuovoTesto = 'Il tuo nuovo messaggio qui';
+          const nuovoTesto = 'Inserire qui il nuovo messaggio';
           chatButton.setAttribute('aria-label', nuovoTesto);
           chatButton.setAttribute('title', nuovoTesto);
-          observer.disconnect(); // Stop observing once found
+          observer.disconnect(); 
         }
     });
 
